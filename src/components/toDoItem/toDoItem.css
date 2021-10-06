@@ -1,0 +1,21 @@
+li {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  width: 50%;
+  margin: auto;
+}
+li input[type="checkBox"]{
+  transform:scale(2);
+}
+li p{
+  padding-left:4em;
+}
+.chekedItem{
+  text-decoration:line-through;
+  color:firebrick;
+}
+ul{
+  width: 50%;
+  margin: auto;
+}

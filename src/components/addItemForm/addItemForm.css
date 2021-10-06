@@ -1,0 +1,9 @@
+form{
+  margin: 2em;
+  display: flex;
+  justify-content: space-between;
+  height: 2em;
+}
+form input[type=text] {
+  width: 100%;
+}

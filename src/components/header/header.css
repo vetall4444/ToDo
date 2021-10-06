@@ -1,0 +1,12 @@
+.headerApp{
+  display: flex;
+  justify-content: space-between;
+}
+.headerApp a{
+  padding-right:0.5em;
+  text-decoration: none;
+}
+header{
+  padding: 1.5em;
+  background-color: aquamarine;
+}

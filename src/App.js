@@ -1,24 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{useState} from "react";
+import HeaderApp from "./components/header/header";
+import AddItemForm from './components/addItemForm/addItemForm'
+import ItemList from './components/itemList/itemList'
 
 function App() {
+  const [items,setItems] =useState([
+    {text:'Купить машину', done: true,key:1},
+    {text:'Посадить дерево', done: false,key:2},
+    {text:'Построить дом', done: false,key:3},
+    {text:'Вырастить сына', done: true,key:4},
+  ]);
+
+  function addItems(newItem){
+    const key=items.length+1;
+    const itemToAdd= {...newItem,key}
+    setItems([...items,itemToAdd]);
+  }
+
+  function updateItems(numItem){
+    const itemToUpdate = items[numItem-1];
+    itemToUpdate.done=!itemToUpdate.done;
+
+    const prev=items.slice(0,numItem-1);
+    const next=items.slice(numItem);
+
+    setItems([...prev,itemToUpdate,...next]);
+  }
+
+  console.log(items);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <HeaderApp/>
+      <AddItemForm addItems={addItems} />
+      <ItemList items={items} updateItems={updateItems}/>
+    </>
   );
 }
 
