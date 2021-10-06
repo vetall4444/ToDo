@@ -1,0 +1,12 @@
+.filter-search{
+  display: flex;
+}
+
+.filter-search input[type="checkBox"]{
+  transform:scale(2);
+  margin-right: 1em;
+}
+.filter{
+  display: flex;
+  align-items: center;
+}

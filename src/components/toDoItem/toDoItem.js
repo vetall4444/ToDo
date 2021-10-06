@@ -1,25 +1,25 @@
-import React,{useState} from 'react';
-import './toDoItem.css';
+import React, { useState } from "react";
+import "./toDoItem.css";
 
-export default function ToDoItem({item,updateItems}) {
+export default function ToDoItem({ item, updateItems }) {
+  const [checked, setChecked] = useState(item.done);
 
-  const [checked,setChecked]=useState(item.done);
+  const styleClasses = checked ? "chekedItem" : "";
 
-  let styleClasses = '';
-  
-  checked?styleClasses='chekedItem':styleClasses='';
-
-  function changeChecked(){
+  function changeChecked() {
     setChecked(!checked);
     updateItems(item.key);
   }
-  return(
+  return (
     <>
       <li>
-        <input type="checkBox"  checked={checked} onChange={changeChecked}></input>
+        <input
+          type="checkBox"
+          checked={checked}
+          onChange={changeChecked}
+        ></input>
         <p className={styleClasses}>{item.text}</p>
       </li>
     </>
-  )
-
+  );
 }
