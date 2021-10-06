@@ -1,7 +1,9 @@
 .filter-search{
   display: flex;
 }
-
+.search{
+  width: 75%;
+}
 .filter-search input[type="checkBox"]{
   transform:scale(2);
   margin-right: 1em;

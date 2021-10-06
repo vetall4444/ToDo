@@ -12,6 +12,7 @@ function App() {
     { text: "Вырастить сына", done: true, key: 4 },
   ]);
   const [filtered, setFiltered] = useState(false);
+  const [searchText, setSearchText] = useState("");
 
   function addItems(newItem) {
     const key = items.length + 1;
@@ -38,12 +39,27 @@ function App() {
       return items;
     }
   }
+  function setSearchItems(text) {
+    setSearchText(text);
+  }
+  function searchItems() {
+    console.log(searchText);
+    if (searchText !== "" && searchText !== null) {
+      return items.filter((item) => {
+        return item.text.includes(searchText);
+      });
+    } else {
+      return items;
+    }
+  }
 
-  const filteredItems = filterItems();
+  let filteredItems = filterItems();
+  filteredItems = searchItems();
+
   return (
     <>
       <HeaderApp />
-      <FilterItems filter={changeFiltered} />
+      <FilterItems filter={changeFiltered} search={setSearchItems} />
       <AddItemForm addItems={addItems} />
       <ItemList items={filteredItems} updateItems={updateItems} />
     </>
