@@ -42,7 +42,7 @@ function App() {
   function setSearchItems(text) {
     setSearchText(text);
   }
-  function searchItems() {
+  function searchItems(items) {
     console.log(searchText);
     if (searchText !== "" && searchText !== null) {
       return items.filter((item) => {
@@ -53,8 +53,7 @@ function App() {
     }
   }
 
-  let filteredItems = filterItems();
-  filteredItems = searchItems();
+  let filteredItems = searchItems(filterItems());
 
   return (
     <>
