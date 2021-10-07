@@ -3,8 +3,10 @@ import HeaderApp from "./components/header/header";
 import AddItemForm from "./components/addItemForm/addItemForm";
 import ItemList from "./components/itemList/itemList";
 import FilterItems from "./components/filterItems/filterItems";
+import BrBad from "./services/brBad";
 
 function App() {
+  const brBad = new BrBad();
   const [items, setItems] = useState([
     { text: "Купить машину", done: true, key: 1 },
     { text: "Посадить дерево", done: false, key: 2 },
@@ -13,6 +15,7 @@ function App() {
   ]);
   const [filtered, setFiltered] = useState(false);
   const [searchText, setSearchText] = useState("");
+  console.log(brBad.getAllCharacters());
 
   function addItems(newItem) {
     const key = items.length + 1;
@@ -43,7 +46,6 @@ function App() {
     setSearchText(text);
   }
   function searchItems(items) {
-    console.log(searchText);
     if (searchText !== "" && searchText !== null) {
       return items.filter((item) => {
         return item.text.includes(searchText);
