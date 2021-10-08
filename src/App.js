@@ -3,10 +3,10 @@ import HeaderApp from "./components/header/header";
 import AddItemForm from "./components/addItemForm/addItemForm";
 import ItemList from "./components/itemList/itemList";
 import FilterItems from "./components/filterItems/filterItems";
-import BrBad from "./services/brBad";
+import PersonTable from "./components/personTable/personTable";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 function App() {
-  const brBad = new BrBad();
   const [items, setItems] = useState([
     { text: "Купить машину", done: true, key: 1 },
     { text: "Посадить дерево", done: false, key: 2 },
@@ -15,7 +15,6 @@ function App() {
   ]);
   const [filtered, setFiltered] = useState(false);
   const [searchText, setSearchText] = useState("");
-  console.log(brBad.getAllCharacters());
 
   function addItems(newItem) {
     const key = items.length + 1;
@@ -59,10 +58,15 @@ function App() {
 
   return (
     <>
-      <HeaderApp />
-      <FilterItems filter={changeFiltered} search={setSearchItems} />
-      <AddItemForm addItems={addItems} />
-      <ItemList items={filteredItems} updateItems={updateItems} />
+      <Router>
+        <HeaderApp />
+        <Route path="/" exact>
+          <FilterItems filter={changeFiltered} search={setSearchItems} />
+          <AddItemForm addItems={addItems} />
+          <ItemList items={filteredItems} updateItems={updateItems} />
+        </Route>
+        <Route path="/bad" component={PersonTable} />
+      </Router>
     </>
   );
 }
